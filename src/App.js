@@ -5,9 +5,9 @@ class App extends React.Component {
         return ( <
             div className = "container" >
             <
-            header >
+            header className = "row" >
             <
-            nav >
+            nav className = "col-xs-10 col-md-8 col-lg-4" >
             <
             a className = "navbar navbar-brand"
             href = "index.html" >
@@ -21,10 +21,11 @@ class App extends React.Component {
             Body / >
 
             <
+            footer className = "row" >
+            <
+            div className = "col-xs-12 col-md-8 col-lg-4 text-center mx-auto" > &
+            copy; NotesAppKeith Blackwelder 2019 < /div>< /
             footer >
-            &
-            copy; Notes - App - Keith Blackwelder 2019 <
-            /footer>
 
             <
             /div>
@@ -37,7 +38,8 @@ class Body extends React.Component {
         return ( <
             main >
             <
-            NoteForm / > <
+            NoteForm / >
+            <
             /main>
         );
     }
@@ -56,17 +58,17 @@ class NoteForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleInput (e) {
+    handleInput(e) {
         this.setState({
             title: e.target.value
         });
     }
 
-    handleChange (e) {
-        
+    handleChange(e) {
+
 
         const textareaLen = e.target.value;
-        document.querySelector('#count').innerHTML = `${ textareaLen.length}/550</main>`;
+        document.querySelector('#count').innerHTML = `${textareaLen.length}/550</main>`;
 
         this.setState({
             note: textareaLen
@@ -75,13 +77,16 @@ class NoteForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        alert(this.state.title);
-        alert(this.state.note);
+        //</div>alert(this.state.title);
+        //</footer>alert(this.state.note);
 
+        document.querySelector('#title').value = '';
+        document.querySelector('#note').value = '';
+        document.querySelector('#count').innerHTML = '';
 
     }
 
-    render() {
+    render(current) {
         return ( <
             div >
             <
@@ -116,17 +121,47 @@ class NoteForm extends React.Component {
                 this.handleChange
             }
             name = "note"
+            id = "note"
             required = "true" / >
             <
-            span id = "count" > < /span> <
-            /div> <
+            span id = "count" > < /span> < /
+            div > <
             div className = "form-group" >
             <
             button className = "btn btn-primary btn-sm"
             type = "submit" > Add Note < /button> < /
-            div > < /form > < /
+            div > < /form >  <
+            CurrentNote note = {
+                this.state.note
+            }
+            title = {
+                this.state.title
+            }
+            / >< /
             div >
-        )
+        );
+    }
+}
+
+class CurrentNote extends React.Component {
+
+    check(e) {
+        alert(e.target.clientWidth);
+    }
+
+    render() {
+        return ( <
+            div className = "container" >
+            <
+            div className = "row" >
+            <
+            div className = "col" > {
+                this.props.title
+            } < /
+            div > < /
+            div > <
+            /div>
+        );
     }
 }
 
