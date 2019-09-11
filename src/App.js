@@ -94,9 +94,12 @@ class NoteForm extends React.Component {
                 this.handleSubmit
             }
             action = "test.php"
+            className = "container"
             id = "noteForm" >
             <
-            div className = "form-group" >
+            div className = "form-group row" >
+            <
+            div className = "col-xs-10 col-md-8 col-lg-4" >
             <
             input type = "text"
             name = "title"
@@ -109,11 +112,12 @@ class NoteForm extends React.Component {
             id = "title"
             placeholder = "Title"
             className = "form-control"
-            required = "true" / >
+            required = "true" / > < /div> < /
+            div > <
+            div className = "form-group row" >
+
             <
-            /div> <
-            div className = "form-group" >
-            <
+            div className = "</div>" > <
             textarea maxlength = "550"
             className = "form-control"
             placeholder = "Note goes here..."
@@ -122,8 +126,7 @@ class NoteForm extends React.Component {
             }
             name = "note"
             id = "note"
-            required = "true" / >
-            <
+            required = "true" / > < /div> <
             span id = "count" > < /span> < /
             div > <
             div className = "form-group" >
@@ -155,11 +158,18 @@ class CurrentNote extends React.Component {
             <
             div className = "row" >
             <
-            div className = "col" > {
+            div className = "col" > Title: {
                 this.props.title
             } < /
             div > < /
-            div > <
+            div >
+            <
+            div className = "row" >
+            <
+            div className = "col" >
+            Note: {
+                this.props.note
+            } < /div></div > <
             /div>
         );
     }
