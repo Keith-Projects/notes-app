@@ -6,9 +6,11 @@ export class Notes extends Component {
   render() {
     return (
       <section className="page-section notes-list">
-        <AddNewNote newNote={this.props.AddNewNote}/>
+        <AddNewNote newNote={this.props.AddNewNote} />
         {this.props.notes.map((note) => {
-          return <NoteItem note={note} key={note.id} />;
+          return (
+            <NoteItem note={note} key={note.id} noteId={note.id} delNote={this.props.delete} />
+          );
         })}
       </section>
     );

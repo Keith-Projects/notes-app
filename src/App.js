@@ -6,18 +6,7 @@ import Footer from "./components/layout/Footer";
 
 export class App extends Component {
   state = {
-    NotesList: [
-      {
-        id: 0,
-        note: "peanut butter, dog food, peaches.",
-        dateCreated: new Date().toLocaleDateString(),
-      },
-      {
-        id: 1,
-        note: "Business Address: 123 cherry LN Palatka, Fl 32177",
-        dateCreated: new Date("10/19/2018").toLocaleDateString(),
-      },
-    ],
+    NotesList: [],
   };
 
   addNewNote = (noteHere, date) => {
@@ -33,12 +22,23 @@ export class App extends Component {
       NotesList: this.state.NotesList,
     });
   };
+
+  // delete note
+  deleteNote = (id) => {
+    this.setState({
+      NotesList: [...this.state.NotesList.filter((item) => item.id !== id)],
+    });
+  };
   render() {
     return (
       <div className="container" id="page-top">
         <Nav />
         <Header />
-        <Notes notes={this.state.NotesList} AddNewNote={this.addNewNote} />
+        <Notes
+          notes={this.state.NotesList}
+          AddNewNote={this.addNewNote}
+          delete={this.deleteNote}
+        />
         <Footer />
       </div>
     );

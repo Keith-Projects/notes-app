@@ -1,27 +1,34 @@
 import React, { Component } from "react";
 
 export class NoteItem extends Component {
+  handleDelete = () => {
+    this.props.delNote(this.props.noteId);
+  };
+
+  handleEdit(e) {}
   render() {
     const { id, note, dateCreated } = this.props.note;
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="card">
           <div className="card-block">
             <div className="card-header">
-              <p className="card-title">{dateCreated}</p>
+              <p className="card-title">
+                <button
+                  type="button"
+                  onClick={this.handleDelete}
+                  className="btn btn-danger"
+                >
+                  X
+                </button>
+                {note}
+              </p>
             </div>
 
             <div className="card-body">
-              <p>{note}</p>
+              <p>{dateCreated}</p>
             </div>
-
-            <div className="card-footer">
-              <button type="button">Delete</button>
-              <button type="button">Edit</button>
-              <button type="button" disabled={true}>
-                Save
-              </button>
-            </div>
+            <hr></hr>
           </div>
         </div>
       </div>
