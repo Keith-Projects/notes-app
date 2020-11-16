@@ -9,6 +9,16 @@ export class App extends Component {
     NotesList: [],
   };
 
+  componentDidMount() {
+    fetch("api/data.php")
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          NotesList: [data],
+        });
+      });
+  }
+
   addNewNote = (noteHere, date) => {
     const createId = this.state.NotesList.length - 1;
     const myNote = {
