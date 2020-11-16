@@ -1,77 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Notes App</title>
-	
-	<script src="jquery/dist/jquery.js"></script>
-	<script src="bootstrap/dist/js/bootstrap.bundle.js"></script>
-	
-	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
-  </head>
-  <body id="page-top">
-    <!-- Navigation -->
-    <nav
-      class="navbar navbar-expand-lg bg-secondary fixed-top py-3"
-      id="mainNav"
-    >
-      <div class="container">
-        <a
-          style="font-size: 160%"
-          class="navbar-brand"
-          href="#page-top"
-          >Notes App</a
-        >
-        <button
-          class="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto my-2 my-lg-0">
-            <li class="nav-item">
-              <button
-                class="nav-link"
-                >Home</
-              button>
-            </li>
-            <li class="nav-item">
-              <button
-                class="nav-link"
-                >About</
-              button>
-            </li>
-            <li class="nav-item">
-              <button
-                id="contactLink"
-                class="nav-link                "
-                >Contact</
-              button>
-            </li>
-          </ul>
-        </div>
-      </div>
-	</nav>
-	
-	<header>
-		<h1>
-			Notes
-		</h1>
-	</header>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Notes App</title>
 
-	<main class="container" id="root"></main>
-	
-	<footer>
-		<div class="container">
-			<h6>Copyright &copy; KTB Web Services 2020</h6>
-		</div>
-	</footer>
+    <!-- jquery and bootstrap files -->
+    <script src="./vendor/jquery/dist/jquery.js"></script>
+    <script src="./vendor/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.css" />
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
   </body>
 </html>
