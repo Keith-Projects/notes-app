@@ -14,7 +14,7 @@ export class AddNewNote extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.note);
+    this.props.newNote(this.state.note, this.state.dateCreated);
     this.setState({
       note: "",
     });

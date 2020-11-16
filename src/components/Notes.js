@@ -6,7 +6,7 @@ export class Notes extends Component {
   render() {
     return (
       <section className="page-section notes-list">
-        <AddNewNote />
+        <AddNewNote newNote={this.props.AddNewNote}/>
         {this.props.notes.map((note) => {
           return <NoteItem note={note} key={note.id} />;
         })}

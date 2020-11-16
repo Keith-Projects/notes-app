@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Nav from "./components/layout/Nav";
-import Header from './components/layout/Header.js';
+import Header from "./components/layout/Header.js";
 import Notes from "./components/Notes";
-import Footer from './components/layout/Footer';
+import Footer from "./components/layout/Footer";
 
 export class App extends Component {
   state = {
@@ -19,13 +19,27 @@ export class App extends Component {
       },
     ],
   };
+
+  addNewNote = (noteHere, date) => {
+    const createId = this.state.NotesList.length - 1;
+    const myNote = {
+      id: createId,
+      note: noteHere,
+      dateCreated: date,
+    };
+
+    this.state.NotesList.push(myNote);
+    this.setState({
+      NotesList: this.state.NotesList,
+    });
+  };
   render() {
     return (
       <div className="container" id="page-top">
         <Nav />
-        <Header/>
-        <Notes notes={this.state.NotesList} />
-        <Footer/>
+        <Header />
+        <Notes notes={this.state.NotesList} AddNewNote={this.addNewNote} />
+        <Footer />
       </div>
     );
   }
