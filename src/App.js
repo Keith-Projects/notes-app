@@ -6,38 +6,78 @@ import Footer from "./components/layout/Footer";
 
 export class App extends Component {
   state = {
-    NotesList: [],
+    NotesList: [
+      {
+        id: -1,
+        note: "",
+        dateCreated: "",
+      },
+    ],
   };
 
   componentDidMount() {
-    fetch("api/data.php")
+    fetch("http://localhost:5000/api/Notes_App_API/api/Notes/read.php")
       .then((res) => res.json())
       .then((data) => {
         this.setState({
-          NotesList: [data],
+          NotesList: [...data.map((item) => item)],
         });
       });
   }
 
   addNewNote = (noteHere, date) => {
-    const createId = this.state.NotesList.length - 1;
-    const myNote = {
-      id: createId,
-      note: noteHere,
-      dateCreated: date,
-    };
+    let xhr = new XMLHttpRequest();
+    let data = new FormData();
+    data.append("note", noteHere);
+    data.append("date", date);
 
-    this.state.NotesList.push(myNote);
-    this.setState({
-      NotesList: this.state.NotesList,
-    });
+    xhr.open(
+      "post",
+      "http://localhost:5000/api/Notes_App_API/api/Notes/create.php",
+      true
+    );
+    xhr.send(data);
+
+    xhr.onreadystatechange = () => {
+      if (xhr.status == 200 && xhr.readyState == 4) {
+        let data = JSON.parse(xhr.responseText);
+        this.setState({
+          NotesList: [...data.map((item) => item)],
+        });
+      }
+    };
   };
 
   // delete note
   deleteNote = (id) => {
-    this.setState({
-      NotesList: [...this.state.NotesList.filter((item) => item.id !== id)],
-    });
+    let xhr = new XMLHttpRequest();
+    let data = new FormData();
+
+    // append the form data
+    data.append("id", id);
+
+    // open and send
+    xhr.open(
+      "POST",
+      "http://localhost:5000/api/Notes_App_API/api/Notes/delete.php",
+      true
+    );
+    xhr.send(data);
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        let dataObj = JSON.parse(xhr.responseText);
+        if (dataObj.message) {
+          this.setState({
+            NotesList: [],
+          });
+        } else {
+          this.setState({
+            NotesList: [...dataObj.map((item) => item)],
+          });
+        }
+      }
+    };
   };
   render() {
     return (

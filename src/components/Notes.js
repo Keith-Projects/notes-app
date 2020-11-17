@@ -8,9 +8,18 @@ export class Notes extends Component {
       <section className="page-section notes-list">
         <AddNewNote newNote={this.props.AddNewNote} />
         {this.props.notes.map((note) => {
-          return (
-            <NoteItem note={note} key={note.id} noteId={note.id} delNote={this.props.delete} />
-          );
+          if (note.id < 0) {
+            return false;
+          } else {
+            return (
+              <NoteItem
+                note={note}
+                key={note.id}
+                noteId={note.id}
+                delNote={this.props.delete}
+              />
+            );
+          }
         })}
       </section>
     );
